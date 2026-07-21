@@ -4,7 +4,8 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-// Reading environment variable with fallback
+
+// Read environment variable with fallback
 const APP_ENV = process.env.APP_ENV || 'Development';
 
 // Middleware
@@ -17,8 +18,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// Serve static frontend files from 'public' directory
-app.use(express.static('public'));
+// Serve static frontend files directly from the root directory
+app.use(express.static(__dirname));
 
 // In-Memory Data Store
 let items = [
@@ -29,6 +30,11 @@ let items = [
 // -------------------------------------------------------------
 // REST API ENDPOINTS
 // -------------------------------------------------------------
+
+// Explicit Root Route - Serves index.html directly
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
 
 // GET /api/items - Retrieve all activity items
 app.get('/api/items', (req, res) => {
