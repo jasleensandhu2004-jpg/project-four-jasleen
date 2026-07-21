@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Dashboard - Express Live</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="dashboard-container">
+    <header class="app-header">
+      <span id="env-badge" class="env-badge">Env: Loading...</span>
+    </header>
+
+    <section id="profile-card" class="card">
+      <div class="avatar-placeholder">✨</div>
+      <h2 id="display-name">Jasleen Sandhu</h2>
+      <p id="display-email">sandhujk4@vcu.edu</p>
+      <div class="badge-container">
+        <span id="display-color-badge" class="badge">Favorite Color: Pink</span>
+      </div>
+    </section>
+
+    <div id="error-banner" class="error-banner hidden"></div>
+    <div id="status-banner" class="status-banner hidden"></div>
+
+    <section class="form-container">
+      <h3>Update Dashboard Details</h3>
+      <form id="user-form">
+        <div class="input-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" value="Jasleen Sandhu" required />
+        </div>
+
+        <div class="input-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" value="sandhujk4@vcu.edu" required />
+        </div>
+
+        <div class="input-group">
+          <label for="fav-color">Favorite Color</label>
+          <input type="text" id="fav-color" value="pink" placeholder="e.g., pink, lightblue, #ff0055" />
+        </div>
+
+        <button type="submit" id="submit-btn">Update Profile</button>
+      </form>
+    </section>
+
+    <hr class="section-divider" />
+
+    <section class="activity-section">
+      <h3>Dashboard Activity Logs</h3>
+      
+      <div class="control-panel">
+        <select id="filter-type">
+          <option value="all">All Logs</option>
+          <option value="profile">Profile Updates</option>
+          <option value="system">System Logs</option>
+        </select>
+        <button id="sort-btn" class="secondary-btn">🔄 Toggle Sort Order</button>
+      </div>
+
+      <div id="loading-indicator" class="loading-state hidden">
+        <div class="spinner"></div>
+        <p>Connecting to Live API...</p>
+      </div>
+
+      <div id="log-list" class="log-list"></div>
+    </section>
+  </main>
+
+  <script src="dashboard_project.js"></script>
+</body>
+</html>
